@@ -32,7 +32,7 @@
                     <?php for ($td = 1; $td <= 3; $td++):?>
                         <td>
                             <?php echo $td; ?>
-                        <td>
+                        </td>
                     <?php endfor; ?>
                 </tr>
             <?php endfor; ?>

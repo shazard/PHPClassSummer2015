@@ -8,6 +8,9 @@
     <body>
         <?php
             include './dbconnect.php';
+            include './functions.php';
+            
+            
             
             $db = getDatabase();
             

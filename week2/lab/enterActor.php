@@ -38,8 +38,10 @@ and open the template in the editor.
                     $height = filter_input(INPUT_POST, 'height');
 
                     $binds = array(
-                        ":dataone" => $dataone,
-                        ":datatwo" => $datatwo
+                        ":firstName" => $firstName,
+                        ":lastName" => $lastName,
+                        ":dob" => $dob,
+                        ":height" => $height
                     );
 
                     if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
@@ -53,11 +55,13 @@ and open the template in the editor.
         <h1><?php echo $results; ?></h1>
 
         <form method="post" action="#">            
-            Data one <input type="text" value="" name="dataone" />
+            First Name <input type="text" value="" name="firstName" />
             <br />
-            Data two <input type="text" value="" name="datatwo" />
+            Last Name <input type="text" value="" name="lastName" />
             <br />
-            Date <input type="date" value="" name="date" />
+            Date of Birth <input type="date" value="" name="dob" />
+            <br />
+            Height <input type="text" value="" name="height" />
             <br />
 
             <input type="submit" value="Submit" />

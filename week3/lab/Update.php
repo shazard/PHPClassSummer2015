@@ -15,6 +15,7 @@
             $result = '';
             if (isPostRequest()) 
             {
+                $id = filter_input(INPUT_POST, 'id');                
                 $corp = filter_input(INPUT_POST, 'corp');                
                 $email = filter_input(INPUT_POST, 'email');
                 $zipcode = filter_input(INPUT_POST, 'zipcode');
@@ -24,6 +25,7 @@
                 $stmt = $db->prepare("UPDATE corps SET corp = :corp, email = :email, zipcode = :zipcode, owner = :owner, phone = :phone WHERE id = :id");
                 
                 $binds = array(
+                    ":id" => $id,
                     ":corp" => $corp,
                     ":email" => $email,
                     ":zipcode" => $zipcode,

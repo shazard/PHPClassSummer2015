@@ -13,14 +13,15 @@
             $db = getDatabase();
             
             $result = '';
-            if (isPostRequest()) {
+            if (isPostRequest()) 
+            {
                 $corp = filter_input(INPUT_POST, 'corp');                
                 $email = filter_input(INPUT_POST, 'email');
                 $zipcode = filter_input(INPUT_POST, 'zipcode');
                 $owner = filter_input(INPUT_POST, 'owner');
                 $phone = filter_input(INPUT_POST, 'phone');
                 
-                $stmt = $db->prepare("UPDATE corps set corp = :corp, email = :email, zipcode = :zipcode, owner = :owner, phone = :phone WHERE id = :id");
+                $stmt = $db->prepare("UPDATE corps SET corp = :corp, email = :email, zipcode = :zipcode, owner = :owner, phone = :phone WHERE id = :id");
                 
                 $binds = array(
                     ":corp" => $corp,
@@ -30,42 +31,52 @@
                     ":phone" => $phone
                     );
                 
-                if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+                if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
+                {
                    $result = 'Record updated';
                 }
-            } else {
+                else 
+                {
+                    $result = 'You fail foo!';
+                    var_dump($db->errorInfo());
+                    var_dump($binds);
+                    
+                }
+            } 
+            
+            else 
+            {
                 $id = filter_input(INPUT_GET, 'id');
-            }
-                $stmt = $db->prepare("SELECT * FROM corps where id = :id");
+            
+            
+            $stmt = $db->prepare("SELECT * FROM corps where id = :id");
                 
             $binds = array(
-                ":id" => $id
-            );
+                ":id" => $id);
 
-            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
+            {
                $results = $stmt->fetch(PDO::FETCH_ASSOC);
             }
 
-            if ( !isset($id) ) {
+            if ( !isset($id) ) 
+            {
                 die('Record not found');
             }
             
             $corp = $results['corp'];
-            $incorpDate = $results['incorp_dt'];
             $email = $results['email'];
             $zipcode = $results['zipcode'];
             $owner = $results['owner'];
             $phone = $results['phone'];
             
-        
+        }
         ?>
         
         <h1><?php echo $result; ?></h1>
         
         <form method="post" action="#">            
             Corporation Name <input type="text" value="<?php echo $corp; ?>" name="corp" />
-            <br/>
-            Incorporation Date <?php echo $incorpDate; ?>
             <br />
             Email <input type="text" value="<?php echo $email; ?>" name="email" />
             <br />

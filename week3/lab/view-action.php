@@ -54,9 +54,6 @@
              * So we loop through each result to get back
              * an array with values
              * 
-             * feel free to 
-             * <?php echo print_r($results); ?>
-             * to see how the array is structured
              */            
             ?>
             

@@ -18,6 +18,9 @@
         }
         
         include './includes/form1.php';
+        ?>
+        <br/>
+        <?php
         include './includes/form2.php';
         
         ?>

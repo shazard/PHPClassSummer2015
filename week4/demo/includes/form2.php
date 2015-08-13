@@ -6,6 +6,6 @@
         <input name="datatwo" value="data2" type="hidden" />
     
          <input type="hidden" name="action" value="Submit2" />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit2" />
     </fieldset>            
 </form>

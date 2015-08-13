@@ -7,10 +7,9 @@
 function dbconnect() {
     $config = array(
         'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPClassSummer2015',
-        'DB_USER' => 'php',
-        'DB_PASSWORD' => 'summer15'
+        'DB_USER' => 'root',
+        'DB_PASSWORD' => ''
     );
-
     try {
         /* Create a Database connection and 
          * save it into the variable */
@@ -20,12 +19,9 @@ function dbconnect() {
         /* If the connection fails we will close the 
          * connection by setting the variable to null */
         $db = null;
-        echo $ex->getMessage();
+        $message = $ex->getMessage();
+        include './includes/error.php';
         exit();
     }
-
     return $db;
 }
-
-
-

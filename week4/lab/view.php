@@ -10,7 +10,7 @@
            include_once './functions/dbconnect.php';
            include_once './functions/dbData.php';
             
-          $results = getAllDatabaseData();
+            $results = getAllDatabaseData();
             /*   columns in corps database: 
             * id, corp, incorp_dt, email, zipcode, owner, phone         
             */

@@ -23,7 +23,7 @@
             <option value="phone">Phone</option>
         </select>
         <input type="hidden" name="action" value="sort" />
-        <input type="submit" value="Submit1" />
-        <input type="submit" value="Reset1" />
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
     </fieldset>    
 </form>

@@ -19,6 +19,7 @@
         <input name="datatwo" value="search" type="hidden" />
     
         <input type="hidden" name="action" value="search" />
-        <input type="submit" value="Submit2" />
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
     </fieldset>            
 </form>

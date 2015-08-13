@@ -4,7 +4,7 @@
         <br>
         
         <label>Search Column</label>  
-        <select name="datatwo">
+        <select name="searchColumn">
             <option value="id">ID</option>
             <option value="corp">Corporation Name</option>
             <option value="incorp_dt">Incorporation Date</option>
@@ -15,8 +15,7 @@
         </select>
         
         <label>Search Data</label>
-        <input name="dataone" type="search" placeholder="Search...." />
-        <input name="datatwo" value="search" type="hidden" />
+        <input name="userSearch" type="search" placeholder="Search...." />
     
         <input type="hidden" name="action" value="search" />
         <input type="submit" value="Submit" />

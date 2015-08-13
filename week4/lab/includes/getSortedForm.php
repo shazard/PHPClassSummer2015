@@ -3,12 +3,12 @@
     <fieldset>Sort Data</legend>
         <br><br>
         <label>Sort Order</label><br>
-        Ascending<input type="radio" name="sortOrder" value="ascend" />
-        Descending<input type="radio" name="sortOrder" value="descend" />
+        Ascending<input type="radio" name="sortOrder" value="ASC" />
+        Descending<input type="radio" name="sortOrder" value="DESC" />
 
         <br><br>
         <label>Sort By</label>  
-        <select name="datatwo">
+        <select name="sortBy">
             <option value="id">ID</option>
             <option value="corp">Corporation Name</option>
             <option value="incorp_dt">Incorporation Date</option>

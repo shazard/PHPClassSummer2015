@@ -5,21 +5,35 @@
         <title></title>        
     </head>
     <body>
-        <?php
-        
-           include_once './functions/dbconnect.php';
-           include_once './functions/dbData.php';
-            
-            $results = getAllDatabaseData();
-            /*   columns in corps database: 
-            * id, corp, incorp_dt, email, zipcode, owner, phone         
-            */
+       
+    <?php
 
-            $column = 'datatwo';
-            $userSearch = 'test';
-            $searchResults = searchDatabase($column, $userSearch);  
+        include_once './functions/dbconnect.php';
+        include_once './functions/dbData.php';
+
+        include './includes/getSortedForm.php';
+        include './includes/getSearchForm.php';
+
+        $results = getAllDatabaseData();
+
+        $action = filter_input(INPUT_GET, 'action');
+
+        if ($action === 'sort')
+        {
+            $column = filter_input(INPUT_GET, 'sortBy');
+            $order = filter_input(INPUT_GET, 'sortOrder'); //ASC or DESC
+            $results = sortDatabase($column, $order);
+        }
+
+        if ($action === 'search')
+        {
+            $column = filter_input(INPUT_GET, 'searchColumn');
+            $userSearch = filter_input(INPUT_GET, 'userSearch');
+            $results = searchDatabase($column, $userSearch);
+        }
+
         ?>
-
+        <br>
         <table border="1">
             <thead>
                 <tr>

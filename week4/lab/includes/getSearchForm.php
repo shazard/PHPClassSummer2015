@@ -1,4 +1,4 @@
-<form action="#" method="post">
+<form action="#" method="get">
     <fieldset>
         <legend>Search Data</legend>
         <br>

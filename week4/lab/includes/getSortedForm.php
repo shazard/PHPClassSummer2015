@@ -1,10 +1,5 @@
 
-<!--
-
--->
-
-
-<form action="#" method="post">
+<form action="#" method="get">
     <fieldset>Sort Data</legend>
         <br><br>
         <label>Sort Order</label><br>

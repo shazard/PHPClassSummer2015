@@ -7,8 +7,9 @@
         <select name="searchColumn">
             <?php 
                 $columnHeaders = fillColumnArray();
+
                 for ($i=0; $i < 7; $i++){ ?>
-                <option value="<?php echo $columnHeaders[$i];?>"><?php echo $columnHeaders[$i];?></option>
+                <option value="<?php echo $columnHeaders[0][$i];?>"><?php echo $columnHeaders[1][$i];?></option>
             <?php } ?>  
         </select>
         

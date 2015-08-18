@@ -10,9 +10,9 @@
         <label>Sort By</label>  
         <select name="sortBy">
             <?php 
-                $results = fillColumnArray();
+                $columnHeaders = fillColumnArray();
                 for ($i=0; $i < 7; $i++){ ?>
-                <option value="<?php echo $results[$i];?>"><?php echo $results[$i];?></option>
+                <option value="<?php echo $columnHeaders[0][$i];?>"><?php echo $columnHeaders[1][$i];?></option>
             <?php } ?>            
         </select>
         <input type="hidden" name="action" value="sort" />

@@ -40,14 +40,9 @@
         <h3>
             
             <?php
-            
-            if ($isSearchMade == true){
-                
-                echo "Total Results " . "XXX";
-                
+            if ($isSearchMade == true){ 
+                echo "Total Results " . "results will go here";
             }
-            
-            
             ?>
             <a href="view.php">Search Again</a>
             

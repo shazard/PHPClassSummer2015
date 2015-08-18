@@ -15,3 +15,9 @@ function isPostRequest() {
 function isGetRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'GET' );
 }
+
+function fillColumnArray() {
+    $columnArray = array("ID", "Corporation Name", "Incorporation Date", "Email", "Zip Code", "Owner", "Phone");
+ 
+    return $columnArray;
+}

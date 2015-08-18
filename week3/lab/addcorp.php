@@ -3,11 +3,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Corporation Updates</title>
     </head>
     <body>
         
-        
+        <h1>Add New Corporation</h1>
         <?php
         
          /*
@@ -64,7 +65,7 @@
             Phone <input type="text" value="" name="phone" />
             <br />
 
-            <input type="submit" value="Submit" />
+            <input type="submit" class="btn btn-primary" value="Submit" />
             
             <a href="view-action.php">Return To View</a>
         </form>

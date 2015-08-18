@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Corporation Updates</title>
     </head>
     <body>
         <?php
@@ -35,11 +36,12 @@
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         ?>
+        <h1>Corporation Updates</h1>
+        <br>
+        <a class="label label-primary" href="addcorp.php">Add A New Corporation</a>
         
-        <a href="addcorp.php">Add A New Corporation</a>
-        <br><br>
         
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Corporation</th>
@@ -59,10 +61,11 @@
             
             <?php foreach ($results as $row): ?>
                 <tr>
-                    <td><?php echo $row['corp']; ?></td> 
-                    <td><a href="Read.php?id=<?php echo $row['id']; ?>">Read</a></td>  
-                    <td><a href="Update.php?id=<?php echo $row['id']; ?>">Update</a></td>            
-                    <td><a href="Delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>            
+                    <td><?php echo $row['corp']; ?></td>
+                    
+                    <td><a class="label label-success" href="Read.php?id=<?php echo $row['id']; ?>">Read</a></td>  
+                    <td><a class="label label-warning" href="Update.php?id=<?php echo $row['id']; ?>">Update</a></td>            
+                    <td><a class="label label-danger" href="Delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>            
                 </tr>
             <?php endforeach; ?>
         </table>

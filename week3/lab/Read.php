@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Corporation Updates</title>
     </head>
     <body>
         <?php
@@ -48,7 +49,7 @@
 
         <br><br>
         
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Corporation</th>

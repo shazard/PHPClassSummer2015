@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title></title>        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Corporation Search</title>
+
     </head>
     <body>
-       
+    
+        
+        <h1>Corporation Search</h1>
     <?php
 
         include_once './functions/dbconnect.php';
@@ -13,6 +16,9 @@
         include_once './functions/util.php';
 
         include './includes/getSortedForm.php';
+    ?>
+        <br>
+    <?php
         include './includes/getSearchForm.php';
 
         $results = getAllDatabaseData();
@@ -49,7 +55,9 @@
             
         </h3>
         <br>
-        <table border="1">
+       
+        
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -75,6 +83,7 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-           
+        </div>
+
     </body>
 </html>

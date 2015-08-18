@@ -1,7 +1,8 @@
-
+<div class="well">
 <form action="#" method="get">
-    <fieldset>Sort Data</legend>
-        <br><br>
+    <fieldset>
+        <legend>Sort Data</legend>
+        
         <label>Sort Order</label><br>
         Ascending<input type="radio" name="sortOrder" value="ASC" />
         Descending<input type="radio" name="sortOrder" value="DESC" />
@@ -16,7 +17,8 @@
             <?php } ?>            
         </select>
         <input type="hidden" name="action" value="sort" />
-        <input type="submit" value="Submit" />
-        <input type="reset" value="Reset" />
+        <input type="submit" class="btn btn-sm btn-primary"  value="Submit" />
+        <input type="reset" class="btn btn-sm btn-primary" value="Reset" />
     </fieldset>    
 </form>
+</div>

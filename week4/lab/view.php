@@ -10,6 +10,7 @@
 
         include_once './functions/dbconnect.php';
         include_once './functions/dbData.php';
+        include_once './functions/util.php';
 
         include './includes/getSortedForm.php';
         include './includes/getSearchForm.php';
@@ -56,7 +57,7 @@
                     <td><?php echo $row['zipcode']; ?></td> 
                     <td><?php echo $row['owner']; ?></td> 
                     <td><?php echo $row['phone']; ?></td> 
-                     </tr>
+                </tr>
             <?php endforeach; ?>
             </tbody>
         </table>

@@ -5,13 +5,11 @@
         
         <label>Search Column</label>  
         <select name="searchColumn">
-            <option value="id">ID</option>
-            <option value="corp">Corporation Name</option>
-            <option value="incorp_dt">Incorporation Date</option>
-            <option value="email">Email</option>
-            <option value="zipcode">Zip Code</option>
-            <option value="owner">Owner</option>
-            <option value="phone">Phone</option>
+            <?php 
+                $results = fillColumnArray();
+                for ($i=0; $i < 7; $i++){ ?>
+                <option value="<?php echo $results[$i];?>"><?php echo $results[$i];?></option>
+            <?php } ?>  
         </select>
         
         <label>Search Data</label>

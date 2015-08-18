@@ -11,12 +11,9 @@
         <select name="sortBy">
             <?php 
                 $results = fillColumnArray();
-                for ($i=0; $i < 8; $i++){ ?>
-                <option value="<?php echo fillColumnArray[$i];?>"><?php echo fillColumnArray[$i];?></option>
-            <?php } ?>
-            
-            
-            
+                for ($i=0; $i < 7; $i++){ ?>
+                <option value="<?php echo $results[$i];?>"><?php echo $results[$i];?></option>
+            <?php } ?>            
         </select>
         <input type="hidden" name="action" value="sort" />
         <input type="submit" value="Submit" />

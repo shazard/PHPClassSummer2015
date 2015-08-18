@@ -19,8 +19,6 @@
 
         $action = filter_input(INPUT_GET, 'action');
         
-        $isSearchMade = false;
-
         if ($action === 'sort')
         {
             $column = filter_input(INPUT_GET, 'sortBy');
@@ -33,17 +31,20 @@
             $column = filter_input(INPUT_GET, 'searchColumn');
             $userSearch = filter_input(INPUT_GET, 'userSearch');
             $results = searchDatabase($column, $userSearch);
-            $issearchMade = true;
+            $columnCount = count($results);
+            if ($columnCount > 0)
+            {
+                echo "<br><h3>Total Results: " . $columnCount . "</h3>";
+            }
+            else
+            {
+                echo "<h3>No results found</h3>";
+            }
         }
 
         ?>
         <h3>
-            
-            <?php
-            if ($isSearchMade == true){ 
-                echo "Total Results " . "results will go here";
-            }
-            ?>
+
             <a href="view.php">Search Again</a>
             
         </h3>

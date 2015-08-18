@@ -18,6 +18,8 @@
         $results = getAllDatabaseData();
 
         $action = filter_input(INPUT_GET, 'action');
+        
+        $isSearchMade = false;
 
         if ($action === 'sort')
         {
@@ -31,9 +33,25 @@
             $column = filter_input(INPUT_GET, 'searchColumn');
             $userSearch = filter_input(INPUT_GET, 'userSearch');
             $results = searchDatabase($column, $userSearch);
+            $issearchMade = true;
         }
 
         ?>
+        <h3>
+            
+            <?php
+            /*
+            if ($isSearchMade == true){
+                
+                echo "Total Results " . "XXX";
+                
+            }
+            
+            */
+            ?>
+            <a href="view.php">Search Again</a>
+            
+        </h3>
         <br>
         <table border="1">
             <thead>

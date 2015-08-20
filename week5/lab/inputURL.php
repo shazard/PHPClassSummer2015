@@ -23,7 +23,7 @@
             if ($stmt->execute() && $stmt->rowCount() > 0) {
                 $allSites = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
-            //var_dump($allSites);
+            var_dump($allSites);
             /*
              * variables  to update results message, contents of text box 
              * and an array to hold the links pulld from the entered site through curl
@@ -41,10 +41,12 @@
              */
             if (isPostRequest()) 
                 {
-                $site = filter_input(INPUT_POST, 'site');
+                    $site = filter_input(INPUT_POST, 'site');
+                    
                     if ( filter_var($site, FILTER_VALIDATE_URL) !== false  )
                     {                        
                         if (in_array($site, $allSites)== false)
+                                //make function to check values by foreach and add each item to a regular array (like table below)
                         {                        
                             if (sendToCurl($site))
                             {
@@ -67,7 +69,7 @@
                                         $stmt2->execute($binds);
                                     } 
 
-                                    $results = 'Data Added';
+                                    $results = "Site Added: " . $site;
                                     
                                     
                                     
@@ -97,7 +99,7 @@
         ?>
 
 
-        <h1><?php echo $results; ?></h1>
+
 
         <form method="post" action="#">            
             Enter Website URL <input type="text" value="<?php echo $linkValue ?>" name="site" />
@@ -106,5 +108,25 @@
             <br>
         </form>
             <a href="inputURL.php">Restart</a>
+        
+            
+        <h1><?php echo $results; ?></h1>
+            <table>
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($linksOnSite as $row): ?>
+                <tr>
+                    <td><?php echo $row; ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+            
+            
+            
     </body>
 </html>

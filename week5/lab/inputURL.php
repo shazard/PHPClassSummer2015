@@ -23,7 +23,7 @@
             if ($stmt->execute() && $stmt->rowCount() > 0) {
                 $allSites = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
-            
+            //var_dump($allSites);
             /*
              * variables  to update results message, contents of text box 
              * and an array to hold the links pulld from the entered site through curl
@@ -55,12 +55,22 @@
                                 $binds = array(
                                 ":site" => $site                        
                                 );
-                                
-                                
 
                                 if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
                                 {
+                                    $site_id = $db->lastInsertId();
+                                    
+                                    $stmt2 = $db->prepare("INSERT INTO sitelinks SET site_id = :site_id, link = :link");
+
+                                    foreach ($linksOnSite as $link) {
+                                        $binds = array( ":link" => $link, ":site_id" => $site_id); 
+                                        $stmt2->execute($binds);
+                                    } 
+
                                     $results = 'Data Added';
+                                    
+                                    
+                                    
                                 }
                             }
                             else
@@ -82,7 +92,7 @@
                     }
             }
 
-            var_dump($linksOnSite);
+            //var_dump($linksOnSite);
 
         ?>
 

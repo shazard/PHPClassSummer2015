@@ -35,6 +35,7 @@
                 if ($stmt->execute() && $stmt->rowCount() > 0) 
                 {
                     $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    var_dump($sites);
                 }
                 
 //                $stmt2 = $db->prepare("SELECT * FROM sitelinks");
@@ -63,8 +64,8 @@
                     {
                     
                         $results = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-                        $displaySite = $sites[$site_id]["site"];
-                        $displayDate = $sites[$site_id]["date"];
+                        $displaySite = $sites[$site_id-1]["site"];
+                        $displayDate = $sites[$site_id-1]["date"];
                 //var_dump($results);
                 echo "<br>";
                     }  

@@ -12,23 +12,36 @@
             
                 $db = dbconnect();
 
-                $stmt = $db->prepare("SELECT * FROM states ORDER BY state_name DESC");
-                $states = array();
+                $stmt = $db->prepare("SELECT * FROM sites");
+                $sites = array();
                 if ($stmt->execute() && $stmt->rowCount() > 0) {
-                    $states = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                
+                $stmt2 = $db->prepare("SELECT * FROM sitelinks");
+                $siteLinks = array();
+                
+                var_dump($sites);
+                echo "<br>";
+                var_dump($sitelinks);
+                echo "<br>";
+                
+                
+                if ($stmt2->execute() && $stmt2->rowCount() > 0) {
+                    $siteLinks = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 }
                 
                 if ( isPostRequest() ) {
                     
                     
-                    $stmt = $db->prepare("SELECT * FROM cities WHERE state_id = :state_id");
-                    $state_id = filter_input(INPUT_POST, 'state_id');
+                    $stmt3 = $db->prepare("SELECT * FROM sitelinks WHERE site_id = :site_id");
+                    $site_id = filter_input(INPUT_POST, 'site_id');
                     $binds = array(
-                    ":state_id" => $state_id
+                    ":site_id" => $site_id
                     );
 
-                    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    if ($stmt3->execute($binds) && $stmt3->rowCount() > 0) {
+                        $results = $stmt3->fetchAll(PDO::FETCH_ASSOC);
                     }
                     
                     
@@ -39,9 +52,9 @@
         
         <form method="post" action="#">
  
-            <select name="state_id">
-            <?php foreach ($states as $row): ?>
-                <option value="<?php echo $row['state_id']; ?>"><?php echo $row['state_name']; ?></option>
+            <select name="site_id">
+            <?php foreach ($sites as $row): ?>
+                <option value="<?php echo $row['site_id']; ?>"><?php echo $row['site']; ?></option>
             <?php endforeach; ?>
             </select>
 
@@ -58,13 +71,15 @@
                 <tbody>
                 <?php foreach ($results as $row): ?>
                     <tr>
-                        <td><?php echo $row['city']; ?></td> 
+                        <td><?php echo $row['sites']; ?></td> 
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
             </table>
 
-        <?php endif; ?>
+        <?php endif;
+
+        ?>
 
         
         

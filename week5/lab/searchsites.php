@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <?php
+        
+//Create a Sites Lookup page (20 points)
+//
+//X   Have a drop down of saved sites.
+//X  Once a site is selected query the sitelinks based on the site_id.
+//X   Display the results. 
+//Add a popup link to each site.  Use the attribute target="popup" in the link tag.
+//Above the table display the site selected with the date and time they were retrieved along with the amount of results found.
+//Make sure the date format is displayed as (mm/dd/yyyy).
+//Make sure the last selection is selected in the drop down.
+//        
+        
+        
+        
+        
+        
+        
+        
+            include './functions/dbconnect.php';
+            include './functions/until.php';
+            
+            
+                $db = dbconnect();
+
+                $stmt = $db->prepare("SELECT * FROM sites");
+                $sites = array();
+                if ($stmt->execute() && $stmt->rowCount() > 0) 
+                {
+                    $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
+                
+//                $stmt2 = $db->prepare("SELECT * FROM sitelinks");
+//                $siteLinks = array();
+//                            
+//                
+//                if ($stmt2->execute() && $stmt2->rowCount() > 0) 
+//                {
+//                    $siteLinks = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+//                }
+//                
+//                var_dump($sites);
+//                echo "<br><br><br>";
+//                var_dump($siteLinks);
+//                echo "<br>";
+               
+                if ( isPostRequest() ) 
+                {
+                    $stmt3 = $db->prepare("SELECT * FROM sitelinks WHERE site_id = :site_id");
+                    $site_id = filter_input(INPUT_POST, 'site_id');
+                    $binds = array(
+                    ":site_id" => $site_id
+                    );
+
+                    if ($stmt3->execute($binds) && $stmt3->rowCount() > 0) 
+                    {
+                    
+                        $results = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+                //var_dump($results);
+                echo "<br>";
+                    }  
+                }
+            
+            
+        ?>
+        
+        <form method="post" action="#">
+ 
+            <select name="site_id">
+            <?php foreach ($sites as $row): ?>
+                <option value="<?php echo $row["site_id"]; ?>"><?php echo $row["site"]; ?></option>
+            <?php endforeach; ?>
+            </select>
+
+            <input type="submit" value="Submit" />
+        </form>
+        <a href="searchsites.php">Try Again</a>
+        
+        
+        
+        
+        <?php if( isset($results) ): ?>
+ 
+        
+        <h3>Site: <?php echo $sites[$site_id]["site"]; ?></h3>
+        <h3>Added: <?php echo $sites[$site_id]["date"]; ?></h3>
+            <h4>Results found <?php echo count($results); ?></h4>
+            <table border="1">        
+                <tbody>
+                <?php foreach ($results as $row): ?>
+                    <tr>
+                        <td><?php echo $row["link"]; ?></td> 
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
+        <?php endif; ?>
+
+        
+        
+        
+    </body>
+</html>

@@ -49,3 +49,44 @@ function filterRegEx($textToCheck){
             $removeDuplicates = array_unique($outputMatches[0]);
             return $removeDuplicates;
 }
+
+function isItemInArray($itemToCheck, $keyToCheck, $dbSheetToCheck)
+{
+            $db = dbconnect();
+            
+            //get list of sites to compare with site entered
+            $stmt = $db->prepare("SELECT * FROM $dbSheetToCheck");
+            $contentsOfDB = array();
+            $newArrayToCheck = array();
+ 
+            if ($stmt->execute() && $stmt->rowCount() > 0) 
+            {
+                $contentsOfDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+
+//            //print entire array with keys
+//            $keys = array_keys($contentsOfDB);
+//            for($i = 0; $i < count($contentsOfDB); $i++) 
+//            {
+//                echo $keys[$i] . "{<br>";
+//                foreach($contentsOfDB[$keys[$i]] as $key => $value) 
+//                {
+//                    echo $key . " : " . $value . "<br>";
+//                }
+//                echo "}<br>";
+//            }
+
+            for($i = 0; $i < count($contentsOfDB); $i++)
+            {
+                $newArrayToCheck[$i] = $contentsOfDB[$i][$keyToCheck];
+            }
+            
+            if (in_array($itemToCheck, $newArrayToCheck)== false)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+}

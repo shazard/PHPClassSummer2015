@@ -20,10 +20,15 @@
             //get list of sites to compare with site entered
             $stmt = $db->prepare("SELECT * FROM sites ORDER BY site_id ASC");
             $allSites = array();
-            if ($stmt->execute() && $stmt->rowCount() > 0) {
+            $checkMe = array();
+            if ($stmt->execute() && $stmt->rowCount() > 0) 
+            {
                 $allSites = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
+            
             var_dump($allSites);
+            $checkMe = isDatabaseItemInAssociativeArray("sites");
+            var_dump($checkMe);
             /*
              * variables  to update results message, contents of text box 
              * and an array to hold the links pulld from the entered site through curl
@@ -44,7 +49,8 @@
                     $site = filter_input(INPUT_POST, 'site');
                     
                     if ( filter_var($site, FILTER_VALIDATE_URL) !== false  )
-                    {                        
+                    {   
+                           
                         if (in_array($site, $allSites)== false)
                                 //make function to check values by foreach and add each item to a regular array (like table below)
                         {                        

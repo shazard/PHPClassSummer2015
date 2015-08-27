@@ -1,40 +1,21 @@
 <?php
-
-function createCategory($value)
-{
-    //categories:
-    //  category_id
-    //  category
-
+//categories
+//category_id
+//category
+function createCategory($value) {
     $db = dbconnect();
     $stmt = $db->prepare("INSERT INTO categories SET category = :category");
     $binds = array(
-    ":category" => $value                        
+        ":category" => $value
     );
-    
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
-    {
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         return true;
     }
-}
-
-function isValidCategory($value)
-{
-    if (empty($value)) {
-        return false;
-    }
+     
+    return false;
     
-    if (preg_match("/^[a-ZA-Z]+$/", $value) == false)
-    {
-        return false;
-    }
-    
-    return true;
 }
-
-
-function getAllCategories() 
-{
+function getAllCategories() {
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM categories");
     $results = array();
@@ -44,4 +25,15 @@ function getAllCategories()
      
     return $results;
     
+}
+function isValidCategory($value) {
+    if ( empty($value) ) {
+        return false;
+    }
+    
+    if ( preg_match("/^[a-zA-Z]+$/", $value) == false ) {
+        return false;
+    }
+    
+    return true;
 }

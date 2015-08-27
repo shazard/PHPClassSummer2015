@@ -39,6 +39,7 @@
         <?php if (isset($_POST['category_id'])): ?>
         <?php 
             $category_id = filter_input(INPUT_POST, 'category_id');
+            var_dump($category_id);
             $products = getAllProducts($category_id);
             var_dump($products);
             ?>

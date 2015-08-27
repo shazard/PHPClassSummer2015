@@ -10,7 +10,7 @@
         
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category_functions.php';
-        include_once '../../functions/products_functions.php';
+        include_once '../../functions/product_functions.php';
         include_once '../../functions/util.php';
         
         

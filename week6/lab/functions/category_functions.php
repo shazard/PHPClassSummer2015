@@ -15,6 +15,53 @@ function createCategory($value) {
     return false;
     
 }
+
+
+function updateCategory($newCategory, $oldCategoryID){
+            
+    $db = dbconnect();
+                            
+    $stmt = $db->prepare("UPDATE categories SET category = :newCategory WHERE category_id = :oldCategoryID");
+
+    $binds = array(
+        ":newCategory" => $newCategory,
+        ":oldCategoryID" => $oldCategoryID
+        
+        );
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+            
+}
+
+function deleteCategory($value)
+{
+    $db = dbconnect();
+                            
+    $stmt = $db->prepare("DELETE FROM categories where category_id = :dropCategory");
+
+    $binds = array(
+        ":dropCategory" => $value
+            
+        );
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+
 function getAllCategories() {
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM categories");

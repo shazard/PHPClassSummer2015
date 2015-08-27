@@ -37,3 +37,18 @@ function isValidPrice($value) {
     }
     return true;
 }
+
+function getAllProducts($value) {
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM products WHERE category_id = :category_id");
+    $binds = array(
+        ":category_id" => $value            
+        );
+    $results = array();
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}

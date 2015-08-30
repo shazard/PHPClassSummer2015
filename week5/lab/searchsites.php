@@ -35,7 +35,7 @@
                 if ($stmt->execute() && $stmt->rowCount() > 0) 
                 {
                     $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    var_dump($sites);
+                    //var_dump($sites);
                 }
                 
 //                $stmt2 = $db->prepare("SELECT * FROM sitelinks");
@@ -99,7 +99,7 @@
                 <tbody>
                 <?php foreach ($results as $row): ?>
                     <tr>
-                        <td><a href="<?php echo $row["link"]; ?>" target="popup"</a><?php echo $row["link"]; ?></td> 
+                        <td><a href="<?php echo $row["link"]; ?>" target="<?php echo $row["link"]; ?>"</a><?php echo $row["link"]; ?></td> 
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

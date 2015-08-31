@@ -12,7 +12,7 @@
 //X   Have a drop down of saved sites.
 //X  Once a site is selected query the sitelinks based on the site_id.
 //X   Display the results. 
-//Add a popup link to each site.  Use the attribute target="popup" in the link tag.
+//X  Add a popup link to each site.  Use the attribute target="popup" in the link tag.
 //X   Above the table display the site selected with the date and time they were retrieved along with the amount of results found.
 //Make sure the date format is displayed as (mm/dd/yyyy).
 //Make sure the last selection is selected in the drop down.

@@ -14,8 +14,8 @@
 //X   Display the results. 
 //X  Add a popup link to each site.  Use the attribute target="popup" in the link tag.
 //X   Above the table display the site selected with the date and time they were retrieved along with the amount of results found.
-//Make sure the date format is displayed as (mm/dd/yyyy).
-//Make sure the last selection is selected in the drop down.
+//X  Make sure the date format is displayed as (mm/dd/yyyy).
+//X  Make sure the last selection is selected in the drop down.
 //        
         
         
@@ -37,7 +37,7 @@
                     $sites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     //var_dump($sites);
                 }
-                
+                  
 //                $stmt2 = $db->prepare("SELECT * FROM sitelinks");
 //                $siteLinks = array();
 //                            
@@ -56,6 +56,7 @@
                 {
                     $stmt3 = $db->prepare("SELECT * FROM sitelinks WHERE site_id = :site_id");
                     $site_id = filter_input(INPUT_POST, 'site_id');
+                    $siteForDropdown = $site_id;
                     $binds = array(
                     ":site_id" => $site_id
                     );
@@ -81,7 +82,7 @@
  
             <select name="site_id">
             <?php foreach ($sites as $row): ?>
-                <option value="<?php echo $row["site_id"]; ?>"><?php echo $row["site"]; ?></option>
+                <option value="<?php echo $row["site_id"]; ?>" <?php if (isset($siteForDropdown) && $row["site_id"] == $siteForDropdown) echo "selected";?>><?php echo $row["site"]; ?></option>
             <?php endforeach; ?>
             </select>
 

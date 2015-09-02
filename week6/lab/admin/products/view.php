@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-        // put your code here
+        
         
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category_functions.php';
@@ -39,9 +39,9 @@
         <?php if (isset($_POST['category_id'])): ?>
         <?php 
             $category_id = filter_input(INPUT_POST, 'category_id');
-            var_dump($category_id);
+            //var_dump($category_id);
             $products = getAllProducts($category_id);
-            var_dump($products);
+            //var_dump($products);
             ?>
         
             <table class="table">
@@ -52,7 +52,8 @@
             </thead>
                 <?php foreach ($products as $row): ?>
                 <tr>
-                    <td><?php echo $row['corp']; ?></td>
+                    <td><?php echo $row['product']; ?></td>
+                    <td><?php echo $row['price']; ?></td>
                     <td><a href="Update.php?id=<?php echo $row['category_id']; ?>">Update</a></td>            
                     <td><a href="Delete.php?id=<?php echo $row['category_id']; ?>">Delete</a></td>            
                 </tr>

@@ -54,7 +54,7 @@
             $category_id = filter_input(INPUT_POST, 'category_id');
             $product = filter_input(INPUT_POST, 'product');
             $price = filter_input(INPUT_POST, 'price');
-            $image = filter_input(INPUT_POST, 'image');
+            
                         
             $errors = array();
             
@@ -67,6 +67,11 @@
             }
             
             if ( count($errors) == 0 ) {
+                
+                $image = uploadProductImage();
+                if ( empty($image) ) {
+                $errors[] = 'image could not be uploaded';
+                }
                 
                 if ( updateProduct($existingProductID, $category_id, $product, $price, $image) ) {
                     $results = 'Product Updated';
@@ -115,7 +120,7 @@
 
 
 
-            <form method="post" action="#">
+            <form method="post" action="#" enctype="multipart/form-data">
 
                 Category:
                 <select name="category_id">
@@ -132,6 +137,8 @@
                 <br />
                 Price : <input type="text" name="price" value="<?php echo $product[0]['price']; ?>" /> 
                 <br />
+                Image: <input name="upfile" type="file" />
+             <br />
                 <input type="submit" value="Submit" />
             </form>
 

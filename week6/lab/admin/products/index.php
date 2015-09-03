@@ -11,7 +11,11 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+            require_once '../../includes/session-start.req-inc.php';
+            require_once '../../includes/access-required.html.php';
         ?>
+        
+        <p><a href="create.php">Create</a></p>
+        <p><a href="view.php">View & Edit</a></p>
     </body>
 </html>

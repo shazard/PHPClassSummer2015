@@ -22,7 +22,7 @@
             $category_id = filter_input(INPUT_POST, 'category_id');
             $product = filter_input(INPUT_POST, 'product');
             $price = filter_input(INPUT_POST, 'price');
-            $image = filter_input(INPUT_POST, 'image');
+            
                         
             $errors = array();
             
@@ -36,11 +36,17 @@
             
             if ( count($errors) == 0 ) {
                 
-                if ( createProduct($category_id, $product, $price, $image ) ) {
-                    $results = 'Product Added';
-                } else {
-                    $results = 'Product was not Added';
+                $image = uploadProductImage();
+                if ( empty($image) ) {
+                $errors[] = 'image could not be uploaded';
                 }
+                
+                    if ( createProduct($category_id, $product, $price, $image ) ) {
+                        $results = 'Product Added';
+                    } else {
+                        $results = 'Product was not Added';
+                    }
+                
                 
             }
             
@@ -63,7 +69,7 @@
         
         <?php include '../../includes/results.html.php'; ?>
                
-        <form method="post" action="#">
+        <form method="post" action="#" enctype="multipart/form-data">
             
             Category:
             <select name="category_id">
@@ -76,10 +82,12 @@
             <br />
             
             
-            Product Name : <input type="text" name="product" value="" /> 
+            Product Name : <input type="text" name="product" value=""  /> 
             <br />
             Price : <input type="text" name="price" value="" /> 
             <br />
+            Image: <input name="upfile" type="file" />
+             <br />
             <input type="submit" value="Submit" />
         </form>
         

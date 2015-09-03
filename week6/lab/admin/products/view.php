@@ -62,6 +62,7 @@
                 <tr>
                     <td><?php echo $row['product']; ?></td>
                     <td><?php echo $row['price']; ?></td>
+                    <td><img src="../../images/<?php echo $row['image']; ?>" width="100" height="100" /></td>
                     <td><a href="Update.php?product_id=<?php echo $row['product_id']; ?>">Update</a></td>            
                     <td><a href="Delete.php?product_id=<?php echo $row['product_id']; ?>">Delete</a></td>            
                 </tr>

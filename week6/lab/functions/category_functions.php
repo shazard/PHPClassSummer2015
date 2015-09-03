@@ -64,7 +64,7 @@ function deleteCategory($value)
 
 function getAllCategories() {
     $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM categories");
+    $stmt = $db->prepare("SELECT * FROM categories ORDER BY category_id");
     $results = array();
     if ($stmt->execute() && $stmt->rowCount() > 0) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

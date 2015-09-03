@@ -17,6 +17,15 @@
         $categories = getAllCategories();
         
         
+            $category_id = filter_input(INPUT_POST, 'category_id');
+
+            
+            
+        
+        
+        
+        
+        
         ?>
         
         <h1>View Products</h1>
@@ -26,7 +35,7 @@
             Category:
             <select name="category_id">
             <?php foreach ($categories as $row): ?>
-                <option value="<?php echo $row['category_id']; ?>">
+                <option value="<?php echo $row['category_id']; ?>" <?php if ($row['category_id'] == $category_id) echo "selected";?>>
                     <?php echo $row['category']; ?>
                 </option>
             <?php endforeach; ?>
@@ -38,10 +47,9 @@
                 
         <?php if (isset($_POST['category_id'])): ?>
         <?php 
-            $category_id = filter_input(INPUT_POST, 'category_id');
-            //var_dump($category_id);
+
             $products = getAllProducts($category_id);
-            //var_dump($products);
+
             ?>
         
             <table class="table">
@@ -54,8 +62,8 @@
                 <tr>
                     <td><?php echo $row['product']; ?></td>
                     <td><?php echo $row['price']; ?></td>
-                    <td><a href="Update.php?id=<?php echo $row['category_id']; ?>">Update</a></td>            
-                    <td><a href="Delete.php?id=<?php echo $row['category_id']; ?>">Delete</a></td>            
+                    <td><a href="Update.php?product_id=<?php echo $row['product_id']; ?>">Update</a></td>            
+                    <td><a href="Delete.php?product_id=<?php echo $row['product_id']; ?>">Delete</a></td>            
                 </tr>
             <?php endforeach; ?>
             </table>

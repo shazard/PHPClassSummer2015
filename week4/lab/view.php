@@ -32,23 +32,24 @@
             $results = sortDatabase($column, $order);
         }
 
-        if ($action === 'search')
-        {
+        if ($action === 'search') :
+        
             $column = filter_input(INPUT_GET, 'searchColumn');
             $userSearch = filter_input(INPUT_GET, 'userSearch');
             $results = searchDatabase($column, $userSearch);
             $columnCount = count($results);
-            if ($columnCount > 0)
-            {
-                echo "<br><h3>Total Results: " . $columnCount . "</h3>";
-            }
-            else
-            {
-                echo "<h3>No results found</h3>";
-            }
-        }
+            if ($columnCount > 0) : ?>
+            
+                <br><h3><?php echo "Total Results: " . $columnCount; ?></h3>
+            
+            <?php else :
+            
+                echo "<h3>No results found</h3>"; endif;?>
+                
+         <?php endif; ?>  
+        
 
-        ?>
+        
         <h3>
 
             <a href="view.php">Search Again</a>
@@ -74,7 +75,7 @@
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['corp']; ?></td>
-                    <td><?php echo $row['incorp_dt']; ?></td> 
+                    <td><?php echo date("m/d/Y", strtotime($row['incorp_dt'])); ?></td> 
                     <td><?php echo $row['email']; ?></td> 
                     <td><?php echo $row['zipcode']; ?></td> 
                     <td><?php echo $row['owner']; ?></td> 

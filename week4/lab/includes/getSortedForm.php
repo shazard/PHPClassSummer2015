@@ -12,8 +12,9 @@
         <select name="sortBy">
             <?php 
                 $columnHeaders = fillColumnArray();
+                $sortSelection = filter_input(INPUT_GET, 'sortBy');
                 for ($i=0; $i < 7; $i++){ ?>
-                <option value="<?php echo $columnHeaders[0][$i];?>"><?php echo $columnHeaders[1][$i];?></option>
+                <option value="<?php echo $columnHeaders[0][$i];?>"<?php if ($sortSelection == $columnHeaders[0][$i]) echo "selected";?>><?php echo $columnHeaders[1][$i];?></option>
             <?php } ?>            
         </select>
         <input type="hidden" name="action" value="sort" />

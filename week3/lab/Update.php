@@ -16,6 +16,7 @@
             $result = '';
             if (isPostRequest()) 
             {
+                //get user input and update database data
                 $id = filter_input(INPUT_POST, 'id');                
                 $corp = filter_input(INPUT_POST, 'corp');                
                 $email = filter_input(INPUT_POST, 'email');

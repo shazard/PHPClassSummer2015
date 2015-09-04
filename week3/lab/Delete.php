@@ -25,7 +25,7 @@
                 ":id" => $id
             );
 
-       
+       //check if item was successfully deleted for message output
         $isDeleted = false;
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $isDeleted = true;

@@ -26,7 +26,7 @@
             if (isPostRequest()) 
                 {
                     $db = getDatabase();
-
+                    //get user input and add new corp to database
                     $stmt = $db->prepare("INSERT INTO corps SET corp = :corp, incorp_dt = now(), email = :email, zipcode = :zipcode, owner = :owner, phone = :phone");                    $corp = filter_input(INPUT_POST, 'corp');                    
                     $email = filter_input(INPUT_POST, 'email');
                     $zipcode = filter_input(INPUT_POST, 'zipcode');

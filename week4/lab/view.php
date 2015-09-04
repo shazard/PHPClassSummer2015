@@ -10,21 +10,24 @@
         
         <h1>Corporation Search</h1>
     <?php
-
+        
         include_once './functions/dbconnect.php';
         include_once './functions/dbData.php';
         include_once './functions/util.php';
 
+        //include form for sorting
         include './includes/getSortedForm.php';
     ?>
         <br>
     <?php
+        //include form for searching
         include './includes/getSearchForm.php';
 
         $results = getAllDatabaseData();
 
         $action = filter_input(INPUT_GET, 'action');
         
+        //check submit button used to determine which search boxes to grab and use for search
         if ($action === 'sort')
         {
             $column = filter_input(INPUT_GET, 'sortBy');

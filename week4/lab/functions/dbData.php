@@ -18,7 +18,7 @@ function getAllDatabaseData()
  */
 function searchDatabase($column, $userSearch)
 {
-    
+    //searches the database based on what the user selected in the form
     $db = dbconnect();
 
     $stmt = $db->prepare("SELECT * FROM corps WHERE $column LIKE CONCAT(:search, '%')");
@@ -36,7 +36,7 @@ function searchDatabase($column, $userSearch)
 }
 
 function sortDatabase ($column, $order)
-{
+{   //sorts the database data based on what the user selected in the form
     $db = dbconnect();
 
     $stmt = $db->prepare("SELECT * FROM corps ORDER BY $column $order");

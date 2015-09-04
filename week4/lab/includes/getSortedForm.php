@@ -11,6 +11,7 @@
         <label>Sort By</label>  
         <select name="sortBy">
             <?php 
+                //populates selection with preset array of items and grabs user input for use in repopulating fields
                 $columnHeaders = fillColumnArray();
                 $sortSelection = filter_input(INPUT_GET, 'sortBy');
                 for ($i=0; $i < 7; $i++){ ?>

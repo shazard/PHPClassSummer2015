@@ -45,6 +45,9 @@
             <thead>
                 <tr>
                     <th>Corporation</th>
+                    <th>Read</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <?php

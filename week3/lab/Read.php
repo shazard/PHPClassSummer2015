@@ -58,6 +58,8 @@
                     <th>Zip Code</th>
                     <th>Owner</th>
                     <th>Phone</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <?php
@@ -78,7 +80,7 @@
             <?php foreach ($results as $row): ?>
                 <tr>
                     <td><?php echo $row['corp']; ?></td>  
-                    <td><?php echo $row['incorp_dt']; ?></td>  
+                    <td><?php echo date("m/d/Y", strtotime($row['incorp_dt'])); ?></td>  
                     <td><?php echo $row['email']; ?></td>  
                     <td><?php echo $row['zipcode']; ?></td>  
                     <td><?php echo $row['owner']; ?></td>  

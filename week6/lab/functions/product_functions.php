@@ -201,3 +201,20 @@ function uploadProductImage() {
     return $imageName;    
     
 }
+
+function getProduct($id) 
+{
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM products JOIN categories WHERE categories.category_id = products.category_id AND product_id = :product_id");
+     $binds = array(
+        ":product_id" => $id
+    );
+    
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}

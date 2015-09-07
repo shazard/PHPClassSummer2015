@@ -6,8 +6,10 @@
         <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        
+        <h1>Welcome to My Shopping Site</h1>
+        
+        <a href="site/">Enter Site</a> | <a href="admin/">Admin Login</a>
+        
     </body>
 </html>

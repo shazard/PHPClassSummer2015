@@ -34,6 +34,7 @@
            
             // change the category page to a dropdown for selecting a category with a submit button
             //change the product page to an if input get, call product funtion for only category selected
+            //add links to sort by different columns using function calls that sort database data differently
             
             
             include_once '../includes/categories.html.php';

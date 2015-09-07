@@ -16,8 +16,7 @@
             startCart(); 
             
             //add number of items in cart to top of page. 
-            //change  checkout include page to have links at top that change sort order by clicking a button
-            //try a var dump of the checkoutproducts array to see if there's a way to sort by each?
+            //change  checkout include page to have a dropdown for viewing cart by category
             
             $total = 0;
             

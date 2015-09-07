@@ -15,8 +15,8 @@
                         
             startCart();  
             
-            //add cart count to each page with: echo getCartCount() like at top of categories include file
-            //add link to this page at top of every page
+            //add cart count to each non admin page with: echo getCartCount() like at top of categories include file
+            //add link to this page at top of every non admin page
             
             $allCategories = getAllCategories();            
             $allProducts = getAllProductsAndCategories();
@@ -32,9 +32,10 @@
             }
                   
            
-            // change the category page to a dropdown for selecting a category with a submit button
-            //change the product page to an if input get, call product funtion for only category selected
+            // change the category include page to a dropdown for selecting a category with a submit button
+            //change the product include page to an if input get, call product funtion for only category selected
             //add links to sort by different columns using function calls that sort database data differently
+            //      using table headers with links? no table headers now
             
             
             include_once '../includes/categories.html.php';

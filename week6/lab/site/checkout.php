@@ -17,6 +17,7 @@
             
             //add number of items in cart to top of page. 
             //change  checkout include page to have a dropdown for viewing cart by category
+            //add table headers to checkout include page
             
             $total = 0;
             

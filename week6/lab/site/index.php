@@ -16,6 +16,7 @@
             startCart();  
             
             //add cart count to each page with: echo getCartCount() like at top of categories include file
+            //add link to this page at top of every page
             
             $allCategories = getAllCategories();            
             $allProducts = getAllProductsAndCategories();

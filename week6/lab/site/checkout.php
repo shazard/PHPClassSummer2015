@@ -5,19 +5,30 @@
         <title></title>
     </head>
     <body>
+        
         <?php
             require_once '../includes/session-start.req-inc.php';
             require_once '../functions/cart_functions.php';
             require_once '../functions/dbconnect.php';
             require_once '../functions/util.php';
             require_once '../functions/category_functions.php';
-            require_once '../functions/product_functions.php';
+            require_once '../functions/product_functions.php'; ?>
+        
+            <?php 
+                $emptycart = filter_input(INPUT_POST, 'empty_cart');
+
+                if ($emptycart == "Empty Cart")
+                {
+                    emptyCart();
+                }
+            ?>
+            
+            <p><?php echo getCartCount(); ?>  items in cart</p>
+            <p><a href="index.php">Go Back To Shopping Page</a></p>
                         
+            <?php
             startCart(); 
             
-            //add number of items in cart to top of page. 
-           
-            //add table headers to checkout include page
             
             $total = 0;
             
@@ -32,8 +43,7 @@
             
             include '../includes/checkout.html.php';
             
-            //add button to empty cart with if _input post = empty call empty cart function
-            //add return to shopping link
+
         ?>
     </body>
 </html>

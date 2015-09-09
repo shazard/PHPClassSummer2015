@@ -70,7 +70,8 @@
                 
                 $image = uploadProductImage();
                 if ( empty($image) ) {
-                $errors[] = 'image could not be uploaded';
+                $image = filter_input(INPUT_POST, 'old_image');
+                $errors[] = 'Existing image retained';
                 }
                 
                 if ( updateProduct($existingProductID, $category_id, $product, $price, $image) ) {
@@ -140,10 +141,14 @@
                 Image: <input name="upfile" type="file" />
              <br />
                 <input type="submit" value="Submit" />
+                <input type="hidden" name="old_image" value="<?php echo $product[0]['image']?>">
+                
             </form>
 
 
         <?php endif; ?>
+            
+            <p><a href="view.php">Return To View Products</a></p>
 
     </body>
 </html>

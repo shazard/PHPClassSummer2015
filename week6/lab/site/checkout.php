@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         
@@ -24,7 +27,9 @@
             ?>
             
             <p><?php echo getCartCount(); ?>  items in cart</p>
+            <hr>
             <p><a href="index.php">Go Back To Shopping Page</a></p>
+            <hr>
                         
             <?php
             startCart(); 

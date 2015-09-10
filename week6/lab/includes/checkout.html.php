@@ -18,7 +18,7 @@
             <td><?php echo $total; ?></td>
         </tr>  
 </table>
-
+<hr>
 
 <form method="post" action="#">
     <input type="submit" name="empty_cart" value="Empty Cart" />

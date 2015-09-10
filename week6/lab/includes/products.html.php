@@ -27,6 +27,7 @@
     <?php endforeach; ?>   
 
 </table>
+<hr>
  <?php else: ?>       
         <h2>No Products Found</h2>
 <?php endif; ?>

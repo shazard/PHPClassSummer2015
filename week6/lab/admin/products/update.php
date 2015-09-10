@@ -2,8 +2,11 @@
 
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
     <?php
@@ -99,9 +102,14 @@
                 </thead>
                     <tr>
                         <td><?php echo $product[0]['category']; ?></td>
-                        <td><?php echo $product[0]['product']; ?></td>                    
-                        <td><?php echo $product[0]['price']; ?></td>                    
-                        <td><?php echo $product[0]['image']; ?></td>                    
+                        <td><?php echo $product[0]['product']; ?></td> 
+                    </tr>
+                    <tr>
+                        <td><?php echo $product[0]['price']; ?></td> 
+                    </tr>
+                    <tr>
+                        <td><img src="../../images/<?php echo $product[0]['image']; ?>" width="100" height="100" /></td>
+                        
                     </tr>
 
                 </table>

@@ -22,7 +22,7 @@
             
             
         
-        $view = filter_input(INPUT_GET, 'view');
+        
         ?>
         
         
@@ -39,6 +39,7 @@
               <h3 class="masthead-brand">Address Book Manager</h3>
               <nav>
             <?php
+            
             if ( isset($_SESSION['isValidUser']) &&  $_SESSION['isValidUser'] === true ) 
             {
                 include './templates/links.html.php';
@@ -50,32 +51,37 @@
 
           <div class="inner cover">
             <?php       
-        
+                $view = filter_input(INPUT_GET, 'view');
                 if ( isPostRequest() ) {
 
                         $email = filter_input(INPUT_POST, 'email');
                         $password = filter_input(INPUT_POST, 'pass');
 
                         if ( isValidUser($email, $password) ) {
-                            $_SESSION['isValidUser'] = true;                    
+                            $_SESSION['isValidUser'] = true;
+
                         } else {
                             $results = 'Sorry please try again';
                         }
 
                     }
 
-                if ( $view === 'add' ) {
-
+                if ( $view === 'add' ) 
+                {
                     include './templates/add.html.php';
-                } else if (  $view === 'update' ) {
-
+                } 
+                else if (  $view === 'update' ) 
+                {
                     include './templates/update.html.php';
-                } else if (  $view === 'delete' ) {
-
+                }
+                else if (  $view === 'delete' ) 
+                {
                     include './templates/delete.html.php';
-                } else {
-                    /* Default view */
+                }
 
+                else
+                {
+                    /* Default view */
                     include './templates/default.html.php';
                 }
 

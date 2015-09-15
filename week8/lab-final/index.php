@@ -19,38 +19,7 @@
             include_once 'functions/login-function.php';
             include_once 'functions/until.php'; 
             
-            
-            
-        
-        
-        ?>
-        
-        
-        
-               
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Address Book Manager</h3>
-              <nav>
-            <?php
-            
-            if ( isset($_SESSION['isValidUser']) &&  $_SESSION['isValidUser'] === true ) 
-            {
-                include './templates/links.html.php';
-            }            
-            ?>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover">
-            <?php       
+                               
                 $view = filter_input(INPUT_GET, 'view');
                 if ( isPostRequest() ) {
 
@@ -63,8 +32,33 @@
                         } else {
                             $results = 'Sorry please try again';
                         }
-
                     }
+        ?>
+        
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Address Book Manager</h3>
+              <nav>
+            <?php            
+                if ( isset($_SESSION['isValidUser']) &&  $_SESSION['isValidUser'] === true ) 
+                {
+                    include './templates/links.html.php';
+                }            
+            ?>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <?php       
+                $view = filter_input(INPUT_GET, 'view');
+
 
                 if ( $view === 'add' ) 
                 {
@@ -94,10 +88,7 @@
                     if ( !isset($_SESSION['isValidUser']) || $_SESSION['isValidUser'] !== true ) 
                     {
                         include 'includes/loginform.html.php';
-                    } 
-
-                
-
+                    }
                 ?>
           </div>
 

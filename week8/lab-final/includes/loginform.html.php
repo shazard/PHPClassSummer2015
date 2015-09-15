@@ -1,5 +1,5 @@
 
-<form class="navbar-form navbar-center" method="post" action="index.php"> 
+<form class="navbar-form navbar-center" method="post" action="#"> 
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Username</span>
     <input class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="email" type="text" value="" />

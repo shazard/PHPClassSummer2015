@@ -63,7 +63,7 @@
 
                     if ($stmt3->execute($binds) && $stmt3->rowCount() > 0) 
                     {
-                    
+                    //fix this - site id may not be in right order, find out what heading is?
                         $results = $stmt3->fetchAll(PDO::FETCH_ASSOC);
                         $displaySite = $sites[$site_id]["site"];
                         //mm/dd/yyyy

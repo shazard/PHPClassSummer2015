@@ -65,10 +65,10 @@
                     {
                     
                         $results = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-                        $displaySite = $sites[$site_id-1]["site"];
+                        $displaySite = $sites[$site_id]["site"];
                         //mm/dd/yyyy
                         //$displayDate = $sites[$site_id-1]["date"];
-                        $displayDate = date("m/d/Y", strtotime($sites[$site_id-1]["date"]));
+                        $displayDate = date("m/d/Y", strtotime($sites[$site_id]["date"]));
 
                 //var_dump($results);
                 echo "<br>";

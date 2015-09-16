@@ -8,7 +8,7 @@
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
+        <!-- Custom bootstrap styles for this template -->
         <link href="css/cover.css" rel="stylesheet">
     </head>
     <body>
@@ -17,6 +17,7 @@
             
             include_once 'functions/dbconnect.php';
             include_once 'functions/login-function.php';
+            include_once './functions/signupfunctions.php';
             include_once 'functions/until.php'; 
             
                                
@@ -94,7 +95,7 @@
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Some footer stuff here</p>
+              <p></p>
             </div>
           </div>
 

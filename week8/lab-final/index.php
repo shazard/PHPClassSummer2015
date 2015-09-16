@@ -29,11 +29,14 @@
 
                         if ( isValidUser($email, $password) ) {
                             $_SESSION['isValidUser'] = true;
+                            header('Location: index.php?view=userdefault');
 
                         } else {
-                            $results = 'Sorry please try again';
+                            $results = 'Invalid Login. Sorry, please try again';
                         }
                     }
+                    
+
         ?>
         
     <div class="site-wrapper">
@@ -51,15 +54,22 @@
                 {
                     include './templates/links.html.php';
                 }            
-            ?>
+                ?>                
               </nav>
             </div>
           </div>
 
           <div class="inner cover">
             <?php       
-                $view = filter_input(INPUT_GET, 'view');
+                //$view = filter_input(INPUT_GET, 'view');
 
+                                
+                
+                if ( !isset($_SESSION['isValidUser']) || $_SESSION['isValidUser'] !== true ) 
+                {
+                    //include 'includes/loginform.html.php';
+                }
+                
 
                 if ( $view === 'add' ) 
                 {
@@ -73,24 +83,25 @@
                 {
                     include './templates/delete.html.php';
                 }
+                else if (  $view === 'signup' ) 
+                {
+                    include './templates/signup.html.php';
+                }
+                else if (  $view === 'userdefault' ) 
+                {
+                    include './templates/userdefault.html.php';
+                }
 
                 else
                 {
-                    /* Default view */
+                    /* Default view for log in or create user*/
                     include './templates/default.html.php';
                 }
 
                 ?>
 
                 <?php include 'includes/results.html.php'; ?>
-
-                <?php 
-                
-                    if ( !isset($_SESSION['isValidUser']) || $_SESSION['isValidUser'] !== true ) 
-                    {
-                        include 'includes/loginform.html.php';
-                    }
-                ?>
+              
           </div>
 
           <div class="mastfoot">

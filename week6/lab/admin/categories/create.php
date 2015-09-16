@@ -21,7 +21,7 @@
         if ( isPostRequest() ) {
             
             $category = filter_input(INPUT_POST, 'category');
-                                    
+            //get category from input and validate before adding            
             if ( isValidCategory($category) ) {
                 
                 if ( createCategory($category) ) {

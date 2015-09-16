@@ -1,7 +1,7 @@
 
 
 <?php if ( isset($allProducts) && count($allProducts) > 0 ) : ?>
-
+<h2>Products</h2><br>
 <table>
 
     <?php foreach ($allProducts as $row): ?>
@@ -17,7 +17,7 @@
             <td><?php echo $row['price']; ?></td>
             <td>
                 <form method="post" action="#">
-                    <input type="submit" value="Buy" />
+                    <input type="submit" value="Buy" class="btn btn-default" />
                     <input type="hidden" name="action" value="buy" />
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>" />
                 </form>

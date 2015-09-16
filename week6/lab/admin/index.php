@@ -36,10 +36,10 @@
             
         ?>
         
-        
+        <a href="../index.php" class="btn btn-default">Return Home</a><br><br>        
         
         <?php include '../includes/loginform.html.php'; ?>
-        
+ 
     </body>
 </html>
 

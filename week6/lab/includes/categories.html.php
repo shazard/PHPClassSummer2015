@@ -1,10 +1,13 @@
 
 
-<p><?php echo getCartCount(); ?>  items in cart</p>
+<p><?php echo getCartCount(); ?>  items in cart</p><br>
+<a href="checkout.php" class="btn btn-default">Check Out</a>
+<hr>
 
 <?php if ( isset($allCategories) ) : ?>
 
-        
+
+<h1>Choose a category to narrow selection</h1><br>
 <form method="post" action="#">
             
             Select Category:
@@ -18,13 +21,15 @@
             <?php endforeach; ?>
             </select>
             <br />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" class="btn btn-default" />
 </form>
 <hr>
         
       
         
-<?php   if (isset($chosenCategory))
+<?php   
+        //narrow products to only chosen category by calling different function and filling same array
+        if (isset($chosenCategory))
         {
             $allProducts = getAllProducts($chosenCategory);
         }

@@ -13,9 +13,13 @@
             require_once '../../includes/session-start.req-inc.php';
             require_once '../../includes/access-required.html.php';
         ?>
-        
-        <p><a href="create.php">Create</a></p>
-        <p><a href="update.php">Update</a></p>
-        <p><a href="delete.php">Delete</a></p>
+        <h1>Category Administration</h1>
+        <hr>
+        <p><a href="create.php" class="btn btn-default">Create</a> Create new product categories</p>
+        <p><a href="update.php" class="btn btn-default">Update</a> Update existing product categories</p>
+        <p><a href="delete.php" class="btn btn-default">Delete</a> Delete product categories - note all associated products must be deleted first</p>
+        <br><br>
+        <a href="../index.php" class="btn btn-default">Return to Administration Page</a>
+        <a href="../../index.php" class="btn btn-default">Return Home</a><br><br> 
     </body>
 </html>

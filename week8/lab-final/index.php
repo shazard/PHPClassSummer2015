@@ -61,52 +61,51 @@
 
           <div class="inner cover">
             <?php       
-                //$view = filter_input(INPUT_GET, 'view');
-
-                                
-                
-                if ( !isset($_SESSION['isValidUser']) || $_SESSION['isValidUser'] !== true ) 
-                {
-                    //include 'includes/loginform.html.php';
-                }
-                
 
                 if ( $view === 'add' ) 
                 {
+                    //add new item page
                     include './templates/add.html.php';
                 } 
                 else if (  $view === 'update' ) 
                 {
+                    //update item page
                     include './templates/update.html.php';
                 }
                 else if (  $view === 'delete' ) 
                 {
+                    //delete item page
                     include './templates/delete.html.php';
                 }
                 else if (  $view === 'signup' ) 
                 {
+                    //new user sign up page
                     include './templates/signup.html.php';
                 }
                 else if (  $view === 'userdefault' ) 
                 {
+                    //main user view page
                     include './templates/userdefault.html.php';
                 }
 
                 else
                 {
-                    /* Default view for log in or create user*/
+                    /* Default view for log in or csignup*/
                     include './templates/default.html.php';
                 }
 
                 ?>
 
-                <?php include 'includes/results.html.php'; ?>
+                <?php 
+                //output of success or error messages
+                include 'includes/results.html.php'; 
+                ?>
               
           </div>
 
           <div class="mastfoot">
             <div class="inner">
-              <p></p>
+              <p>@</p>
             </div>
           </div>
 

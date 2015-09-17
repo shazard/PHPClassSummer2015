@@ -32,8 +32,14 @@
                             $_SESSION['isValidUser'] = true;
                             header('Location: index.php?view=userdefault');
 
-                        } else {
+                        } 
+                        
+                        else 
+                        {
+                            if ( !isset($_SESSION['isValidUser']) || $_SESSION['isValidUser'] !== true )
+                            {
                             $results = 'Invalid Login. Sorry, please try again';
+                            }
                         }
                     }
                     
@@ -87,6 +93,11 @@
                 {
                     //main user view page
                     include './templates/userdefault.html.php';
+                }
+                else if (  $view === 'read' ) 
+                {
+                    //user view of detailed address info and update/delete access
+                    include './templates/read.html.php';
                 }
 
                 else

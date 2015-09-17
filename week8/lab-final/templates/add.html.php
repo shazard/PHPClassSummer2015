@@ -5,7 +5,7 @@
 
 ?>
 <h1 class="cover-heading">Add New Item To Address Book</h1>
-<hr>
+
 <br>
 
 
@@ -59,33 +59,6 @@
             </ul>
         <?php endif; ?>
  
-        <form method="post" action="#" enctype="multipart/form-data" class="navbar-form navbar-center">
-            <div class="form-group">
-                Group:
-                <select name="selected_address_group" class="form-control">
-                <?php foreach ($addressGroups as $row): ?>
-                    <option value="<?php echo $row['address_group_id']; ?>">
-                        <?php echo $row['address_group']; ?>
-                    </option>
-                <?php endforeach; ?>
-                </select>
-                <br />
-
-
-                Full Name : <input type="text" name="fullname" value="" class="form-control" /> 
-                <br />
-                Email : <input type="email" name="email" value="" class="form-control" /> 
-                <br />
-                Address : <input type="text" name="address" value="" class="form-control" /> 
-                <br />
-                Phone : <input type="text" name="phone" value="" class="form-control" /> 
-                <br />
-                Website : <input type="website" name="website" value="" class="form-control" /> 
-                <br />
-                Birthday : <input type="date" name="birthday" value="" class="form-control" /> 
-                <br />
-                Image: <input name="upfile" type="file" class="btn btn-default" />
-                <br />
-                <input type="submit" value="Submit" class="btn btn-default" />
-            </div>
-        </form>
+<?php
+        include 'includes/addform.html.php';
+?>

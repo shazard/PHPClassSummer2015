@@ -29,6 +29,7 @@ function isValidEmail($value) {
     return true;
 }
 
+//checks is field is empty
 function isFieldPopulated($value) {
     if ( empty($value) ) {
         return false;
@@ -36,11 +37,61 @@ function isFieldPopulated($value) {
     return true;    
 }
 
+//gets contents of address groups db
 function getAddressGroups() {
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM address_groups ORDER BY address_group_id");
     $results = array();
     if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}
+
+//gets contents of addresses db for one user id
+function getUserAddresses($value) {
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id");
+    $binds = array(
+        ":user_id" => $value            
+        );
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}
+//debugging function to load entire contents of both relational databases
+function getAllAddressesAndGroups() {
+ 
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM address JOIN address_groups ON address.address_group_id = address_groups.address_group_id");
+
+    $results = array();
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}
+
+//gets contents of addresses bd with connected address groups for one user, for one address group, sorted as directed
+function getUserAddressesForOneGroup($userid, $groupid, $sortBy) 
+{
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM address JOIN address_groups ON address.address_group_id = address_groups.address_group_id WHERE address.user_id = :user_id AND address.address_group_id = :address_group_id ORDER BY :sortBy DESC");
+    $binds = array(
+        ":user_id" => $userid,
+        ":address_group_id"=> $groupid,
+        ":sortBy" => $sortBy
+        );
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
      

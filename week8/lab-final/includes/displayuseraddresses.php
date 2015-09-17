@@ -1,24 +1,19 @@
-<h3>Choose a group to narrow selection</h3><br>
-<form method="post" action="#">
-            <select name="selected_address_group" class="form-control">
-            <?php                
-                $selectedAddressGroupId = filter_input(INPUT_POST, 'selected_address_group');
-                foreach ($addressGroups as $row): ?>
-                <option value="<?php echo $row['address_group_id']; ?>"<?php if ($row['address_group_id'] == filter_input(INPUT_POST, "$selectedAddressGroupId")) echo "selected";?>>
-                    <?php echo $row['address_group']; ?>
-                </option>
-            <?php endforeach; ?>
-            </select>
-            <br>
-            <input type="submit" value="Submit" class="btn btn-default" />
-</form>
-<br>
+<h4>Your Address Book</h4><br>
+<?php
+//form gets $selectedAddressGroupId, $searchIndex and $searchField from user
+include 'includes/searchsortform.html.php';
+?>
+
        
 <?php   
         //narrow products to only chosen category by calling different function and filling same array
         if (isset($selectedAddressGroupId))
         {
-            $displayUserAddressInfo = getUserAddressesForOneGroup($currentUserID, $selectedAddressGroupId, $sortBy);
+            $displayUserAddressInfo = getUserAddressesSortedForOneGroup($currentUserID, $selectedAddressGroupId, $sortBy);
+        }
+        if (isset($selectedAddressGroupId) && isset($searchIndex))
+        {
+            $displayUserAddressInfo = getUserAddressesSortedForOneGroup($userid, $groupid, $sortBy) ;
         }
         
         

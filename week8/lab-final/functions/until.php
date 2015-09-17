@@ -29,7 +29,7 @@ function isValidEmail($value) {
     return true;
 }
 
-//checks is field is empty
+//checks if field is empty
 function isFieldPopulated($value) {
     if ( empty($value) ) {
         return false;
@@ -81,7 +81,7 @@ function getAllAddressesAndGroups() {
 }
 
 //gets contents of addresses bd with connected address groups for one user, for one address group, sorted as directed
-function getUserAddressesForOneGroup($userid, $groupid, $sortBy) 
+function getUserAddressesSortedForOneGroup($userid, $groupid, $sortBy) 
 {
     $db = dbconnect();
     $stmt = $db->prepare("SELECT * FROM address JOIN address_groups ON address.address_group_id = address_groups.address_group_id WHERE address.user_id = :user_id AND address.address_group_id = :address_group_id ORDER BY :sortBy DESC");
@@ -89,6 +89,25 @@ function getUserAddressesForOneGroup($userid, $groupid, $sortBy)
         ":user_id" => $userid,
         ":address_group_id"=> $groupid,
         ":sortBy" => $sortBy
+        );
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}
+
+//gets contents of addresses db for one user id, sorted, where a search is needed
+function getUserAddressesByFieldSearch($userid, $sortBy, $searchedField, $searchedColumn) {
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id AND $SearchedColumn LIKE CONCAT(:searchedField, '%')ORDER BY :sortBy DESC");
+    $binds = array(
+        ":user_id" => $userid,
+        ":sortBy" => $sortBy,
+        ":searchedField" => $searchedField,
+        ":searchedColumn" => $searchedColumn
         );
     $results = array();
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {

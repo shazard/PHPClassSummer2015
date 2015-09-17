@@ -8,9 +8,8 @@
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        
-        <!-- Custom styles for this template -->
-        <link href="starter-template.css" rel="stylesheet">
+        <!-- Custom bootstrap styles for this template -->
+        <link href="css/cover.css" rel="stylesheet">
     </head>
     <body>
         <?php
@@ -46,34 +45,28 @@
                     
 
         ?>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Address Management System</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+        
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Address Book Manager</h3>
+              <nav>
             <?php            
                 if ( isset($_SESSION['isValidUser']) &&  $_SESSION['isValidUser'] === true ) 
                 {
                     include './templates/links.html.php';
                 }            
-                ?>
-            </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+                ?>                
+              </nav>
+            </div>
+          </div>
 
-    <div class="container">
-
-      <div class="starter-template">
-          <h1>&nbsp;</h1>
+          <div class="inner cover">
             <?php       
 
                 if ( $view === 'add' ) 
@@ -120,7 +113,18 @@
                 include 'includes/results.html.php'; 
                 ?>
               
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>@</p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </div><!-- /.container -->
+
+    </div>
     </body>
 </html>

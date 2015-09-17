@@ -1,4 +1,4 @@
-<h1 class="cover-heading">Log In</h1>
+<h1>Log In</h1>
 
 <?php
 

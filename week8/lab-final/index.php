@@ -8,8 +8,6 @@
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom bootstrap styles for this template -->
-        <link href="css/cover.css" rel="stylesheet">
     </head>
     <body>
         <?php
@@ -42,31 +40,26 @@
                             }
                         }
                     }
-                    
-
         ?>
         
-    <div class="site-wrapper">
+    <nav>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><h3> &nbsp; Address Manager</h3></li>                                      
+        <?php            
+            if ( isset($_SESSION['isValidUser']) &&  $_SESSION['isValidUser'] === true ) 
+            {
+                include './templates/links.html.php';
+            }            
+        ?>
+        </ul>
 
-      <div class="site-wrapper-inner">
+    </nav>
 
-        <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Address Book Manager</h3>
-              <nav>
-            <?php            
-                if ( isset($_SESSION['isValidUser']) &&  $_SESSION['isValidUser'] === true ) 
-                {
-                    include './templates/links.html.php';
-                }            
-                ?>                
-              </nav>
-            </div>
-          </div>
+    <div class="container">
 
-          <div class="inner cover">
+      <div class="starter-template">
+<!--          <h1>&nbsp;</h1>-->
             <?php       
 
                 if ( $view === 'add' ) 
@@ -113,18 +106,7 @@
                 include 'includes/results.html.php'; 
                 ?>
               
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>@</p>
-            </div>
-          </div>
-
-        </div>
-
       </div>
-
-    </div>
+    </div><!-- /.container -->
     </body>
 </html>

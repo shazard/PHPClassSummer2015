@@ -6,7 +6,7 @@
 //password
 //created
 
-
+//checks email, checks password, and attempts to add new user
 function doCreateUser($email, $password) {
     if (isValidEmail($email))
     {
@@ -26,17 +26,6 @@ function doCreateUser($email, $password) {
      
     return false;
     
-}
-
-function isValidEmail($value) {
-    if ( empty($value) ) {
-        return false;
-    }
-    if ( filter_var($value, FILTER_VALIDATE_EMAIL) == false ) {
-            return false;
-    }
-    
-    return true;
 }
 
 function isValidPassword($value) {

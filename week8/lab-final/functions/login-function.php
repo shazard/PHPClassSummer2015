@@ -24,6 +24,7 @@ function isValidUser( $email, $pass )
     {
         $resultsFromDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['currentUserID'] = $resultsFromDB[0]['user_id'];
+        $_SESSION['currentUserEmail'] = $resultsFromDB[0]['email'];
         return true;
     }
     

@@ -36,7 +36,13 @@
                     <td><b>Photo</b></td>
                 </tr>
                 <tr>
-                    <td><img src="images/<?php echo $row['image']; ?>" height="100"  /></td>
+                    <td>
+                        <?php if ( empty($row['image']) ) : ?>
+                        <p class="btn btn-danger">No Photo Uploaded</p>
+                        <?php else: ?>                        
+                            <img src="images/<?php echo $row['image']; ?>" height="100"  />
+                        <?php endif; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>

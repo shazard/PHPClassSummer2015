@@ -24,7 +24,7 @@
             <td>Full Name : </td><td><input type="text" name="fullname" value="" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Email : </td><td><input type="email" name="email" value="" class="form-control" /></td>
+            <td>Email : </td><td><input type="email" name="email" value="" placeholder="http://www." class="form-control" /></td>
         </tr>
         <tr>
             <td>Address : </td><td><input type="text" name="address" value="" class="form-control" /></td>

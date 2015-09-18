@@ -50,21 +50,20 @@ function getAddressGroups() {
     
 }
 
-//gets contents of addresses db for one user id
-function getUserAddresses($value) {
+//gets contents of addresses db for one user id, sorted as directed
+function getUserAddresses($value, $sort) {
     $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id");
+    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id ORDER BY $sort ASC");
     $binds = array(
-        ":user_id" => $value            
+        ":user_id" => $value
         );
     $results = array();
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-     
-    return $results;
-    
+    }     
+    return $results;    
 }
+
 //debugging function to load entire contents of both relational databases
 function getAllAddressesAndGroups() {
  
@@ -80,11 +79,11 @@ function getAllAddressesAndGroups() {
     
 }
 
-//gets contents of addresses bd with connected address groups for one user, for one address group, sorted as directed
+//gets contents of addresses db with connected address groups for one user, for one address group, sorted as directed
 function getUserAddressesSortedForOneGroup($userid, $groupid, $sortBy) 
 {
     $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM address JOIN address_groups ON address.address_group_id = address_groups.address_group_id WHERE address.user_id = :user_id AND address.address_group_id = :address_group_id ORDER BY :sortBy DESC");
+    $stmt = $db->prepare("SELECT * FROM address JOIN address_groups ON address.address_group_id = address_groups.address_group_id WHERE address.user_id = :user_id AND address.address_group_id = :address_group_id ORDER BY :sortBy");
     $binds = array(
         ":user_id" => $userid,
         ":address_group_id"=> $groupid,
@@ -99,21 +98,37 @@ function getUserAddressesSortedForOneGroup($userid, $groupid, $sortBy)
     
 }
 
-//gets contents of addresses db for one user id, sorted, where a search is needed
-function getUserAddressesByFieldSearch($userid, $sortBy, $searchedField, $searchedColumn) {
+function searchDatabase($userID, $column, $userSearch)
+{
+    //searches the database based on what the user selected in the form
     $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id AND $SearchedColumn LIKE CONCAT(:searchedField, '%')ORDER BY :sortBy DESC");
+
+    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :userID AND $column LIKE CONCAT(:search, '%')");
+    
     $binds = array(
-        ":user_id" => $userid,
-        ":sortBy" => $sortBy,
-        ":searchedField" => $searchedField,
-        ":searchedColumn" => $searchedColumn
+        
+            ":search" => $userSearch,
+            "userID" => $userID
+            );
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
+    {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }  
+    return $results;
+  
+}
+
+function getSingleAddress($user, $address) {
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :user_id AND address_id = :address_id");
+    $binds = array(
+        ":user_id" => $user,
+        ":address_id" => $address
         );
     $results = array();
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-     
-    return $results;
-    
+    }     
+    return $results;    
 }

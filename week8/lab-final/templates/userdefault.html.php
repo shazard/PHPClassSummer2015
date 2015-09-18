@@ -4,11 +4,8 @@
     require_once 'includes/access-required.html.php';
     //echo $_SESSION['currentUserID'];
 
-    $addressGroups = getAddressGroups();
-    $sortBy = 'fullname';
     $currentUserID = $_SESSION['currentUserID'];
-    $displayUserAddressInfo = getUserAddresses($currentUserID);
-    
+ 
     $userView = filter_input(INPUT_GET, 'user_view');
 ?>
 <h1 class="cover-heading">Welcome To Our Site, <?php echo $_SESSION['currentUserEmail']; ?></h1>

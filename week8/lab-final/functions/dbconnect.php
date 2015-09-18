@@ -3,6 +3,13 @@
  * Function to extablish a databse connection
  * 
  * @return PDO Object
+ * 
+ * 
+ *      'DB_DNS' => 'mysql:host=mysql14.000webhost.com;port=3306;dbname=a6724009_php2015',
+        'DB_USER' => 'a6724009_php2015',
+        'DB_PASSWORD' => 'test123'
+ * 
+ * 
  */  
 function dbconnect() {
     $config = array(

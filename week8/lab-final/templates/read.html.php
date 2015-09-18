@@ -19,8 +19,8 @@
             <?php foreach ($viewAddress as $row): ?>
                 <tr>
                     <td><?php echo $row['fullname']; ?></td>
-                    <td><?php echo $row['address']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
+                    <td><a href="http://maps.google.com/?q=<?php echo $row['address']; ?>" target="_blank"><?php echo $row['address']; ?></a></td>
+                    <td><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td>
                 </tr>
                 <tr>
                     <td><b>Phone</b></td>
@@ -28,15 +28,15 @@
                     <td><b>Birthday</b></td>
                 </tr>
                 <tr>
-                    <td><?php echo $row['phone']; ?></td>
-                    <td><?php echo $row['website']; ?></td>
-                    <td><?php echo $row['birthday']; ?></td>
+                    <td><a href="tel:<?php echo $row['phone']; ?>"><?php echo $row['phone']; ?></a></td>
+                    <td><a href="<?php echo $row['website']; ?>" target="_blank"><?php echo $row['website']; ?></a></td>
+                    <td><?php echo date("m/d/Y", strtotime($row['birthday'])); ?></td>
                 </tr>
                 <tr>
                     <td><b>Photo</b></td>
                 </tr>
                 <tr>
-                    <td><?php echo $row['image']; ?></td>
+                    <td><img src="images/<?php echo $row['image']; ?>" height="100"  /></td>
                 </tr>
                 <tr>
                     <td>

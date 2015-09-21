@@ -3,7 +3,7 @@
         require_once 'includes/access-required.html.php';
 ?>
 
-<h1 class="cover-heading">Update Page</h1>
+<h1 class="cover-heading">Make An Update</h1>
 
 
 <form method="post" action="?view=userdefault&user_view=read&view_address_id=<?php echo $_SESSION['currentAddress'];?>">
@@ -12,14 +12,7 @@
 
         
  <?php
- 
-        if (isset($_SESSION['currentAddress']))
-        {
-        
-        
-        
-        
-        }
+
  
         $addressToUpdate = getSingleAddress($_SESSION['currentUserID'], $_SESSION['currentAddress']);
         $viewdate = date("m/d/Y", strtotime($addressToUpdate[0]['birthday']));

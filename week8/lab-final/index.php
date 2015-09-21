@@ -16,8 +16,9 @@
             
             include_once 'functions/dbconnect.php';
             include_once 'functions/login-function.php';
-            include_once './functions/signupfunctions.php';
-            include_once './functions/addfunctions.php';
+            include_once 'functions/signupfunctions.php';
+            include_once 'functions/addfunctions.php';
+            include_once 'functions/updatedeletefunctions.php';
             include_once 'functions/until.php'; 
             
                                

@@ -4,9 +4,25 @@
         $currentAddressID = filter_input(INPUT_GET, 'view_address_id');
         $_SESSION['currentAddress'] = $currentAddressID;
         $viewAddress = getSingleAddress($currentUserID, $currentAddressID);
+        if ($viewAddress[0]['address_group_id'] == 1)
+        {
+                $displayGroup = 'View Friend';
+        }
+        else if ($viewAddress[0]['address_group_id'] == 2)
+        {
+                $displayGroup = 'View Family Member';
+        }
+        else if ($viewAddress[0]['address_group_id'] == 3)
+        {
+                $displayGroup = 'View Coworker';
+        }
+       else
+       {
+           $displayGroup = 'Unknown Group Type';
+       }
 ?>
 
-<h1 class="cover-heading">Read Page</h1>
+<h1 class="cover-heading"><?php echo $displayGroup;?></h1>
 
 
 
@@ -46,15 +62,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <form method="post" action="?view=userdefault&user_view=update">
-                            <input type="submit" value="Update" class="btn btn-default" />
-                        </form>
-                    </td>
-                    
+                        <a href="?view=userdefault&user_view=update" class="btn btn-default">Update</a>
+                    </td>                    
                     <td>
-                        <form method="post" action="?view=userdefault&user_view=delete&view_address_id=<?php echo $currentAddressID;?>">
-                            <input type="submit" value="Delete" class="btn btn-default" />
-                        </form>
+                        <a href="?view=userdefault&user_view=delete" class="btn btn-default">Delete</a>
                     </td>
                 </tr>    
             <?php endforeach; ?>

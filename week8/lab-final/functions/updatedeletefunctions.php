@@ -1,18 +1,34 @@
 <?php
+/*
+ * address sheet fields:
+ * address_id*
+ * user_id - key to users
+ * address_group_id - key to address_groups
+ * fullname
+ * email
+ * address
+ * phone
+ * website
+ * birthday - datetime
+ * image
+ */
 
-function updateProduct($existingProductID, $newCategory_id, $product, $price, $image)
-{
-            
+function updateAddress($existingAddressID, $newAddressGroup_id, $fullname, $address, $email, $phone, $website, $birthday, $image)
+{            
     $db = dbconnect();
                             
-    $stmt = $db->prepare("UPDATE products SET category_id = :newCategory_id, product = :product, price = :price, image = :image WHERE product_id = :existingProductID");
+    $stmt = $db->prepare("UPDATE address SET address_group_id = :newAddressGroup_id, fullname = :fullname, address = :address, email = :email, phone = :phone, website = :website, birthday = :birthday, image = :image WHERE address_id = :existingAddressID");
 
     $binds = array(
         
-        ":existingProductID" => $existingProductID,
-        ":newCategory_id" => $newCategory_id,
-        ":product" => $product,
-        ":price" => $price,
+        ":existingAddressID" => $existingAddressID,
+        ":newAddressGroup_id" => $newAddressGroup_id,
+        ":fullname" => $fullname,
+        ":address" => $address,
+        ":email" => $email,               
+        ":phone" => $phone,        
+        ":website" => $website,        
+        ":birthday" => $birthday,        
         ":image" => $image        
         );
 
@@ -23,18 +39,17 @@ function updateProduct($existingProductID, $newCategory_id, $product, $price, $i
     else 
     {
         return false;
-    }
-            
+    }            
 }
 
-function deleteProduct($value)
+function deleteAddress($existingAddressID)
 {
     $db = dbconnect();
                             
-    $stmt = $db->prepare("DELETE FROM products where product_id = :dropProduct");
+    $stmt = $db->prepare("DELETE FROM address where address_id = :dropAddress");
 
     $binds = array(
-        ":dropProduct" => $value
+        ":dropAddress" => $existingAddressID
             
         );
 

@@ -136,6 +136,10 @@ function uploadImage() {
     
     $imageName = "";
     
+    /*
+ * make sure php_fileinfo.dll extension is enable in php.ini for apache
+ */
+    
     try {
 
         // Undefined | Multiple Files | $_FILES Corruption Attack
@@ -176,6 +180,15 @@ function uploadImage() {
         if ( false === $ext ) {
             throw new RuntimeException('Invalid file format.');
         }
+        
+        /* Alternative to getting file extention */ 
+        //comment out above function and uncomment below function
+    //$name = $_FILES["upfile"]["name"]; 
+    //$ext = strtolower(end((explode(".", $name))));
+    //if ( preg_match("/^(jpeg|jpg|png|gif)$/", $ext) == false ) {
+    //throw new RuntimeException('Invalid file format.');
+    //}
+    /* Alternative END */
 
         // You should name it uniquely.
         // DO NOT USE $_FILES['upfile']['name'] WITHOUT ANY VALIDATION !!

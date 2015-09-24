@@ -15,7 +15,7 @@
 
  
         $addressToUpdate = getSingleAddress($_SESSION['currentUserID'], $_SESSION['currentAddress']);
-        $viewdate = date("m/d/Y", strtotime($addressToUpdate[0]['birthday']));
+        $viewdate = date("Y-m-d", strtotime($addressToUpdate[0]['birthday']));
         $newAddressData = array();
         $addressGroups = getAddressGroups();
                 

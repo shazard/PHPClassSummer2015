@@ -36,7 +36,7 @@
             <td>Website : </td><td><input type="website" name="website" value="<?php echo $addressToUpdate[0]['website']; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Birthday : </td><td><input type="text" name="birthday" value="" placeholder="<?php echo $viewdate; ?>" class="form-control" onfocus="(this.type='date')" /></td>
+            <td>Birthday : </td><td><input type="date" name="birthday" value="<?php echo $viewdate; ?>" class="form-control" /></td>
         
         </tr>
         <tr>
